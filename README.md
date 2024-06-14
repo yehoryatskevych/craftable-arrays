@@ -132,7 +132,7 @@ An abstract base class representing an array operation.
 
 - `at(index: number): U | undefined`
   - Gets the element at the specified index.
-- `slice(start: number, end?: number): TCraftableArrayValue<U>`
+- `slice(start: number, end?: number): TCArrayValue<U>`
   - Returns a slice of the array from `start` to `end`.
 - `toArray(): U[]`
   - Converts the array operation result to a plain array.
@@ -143,7 +143,7 @@ A class representing a slice of an array.
 
 #### Constructor
 
-- `constructor(ref: TCraftableArrayValue<T>, start?: number, end?: number, allowFlat?: boolean)`
+- `constructor(ref: TCArrayValue<T>, start?: number, end?: number, allowFlat?: boolean)`
   - Creates a slice of the given array or array operation.
 
 ### `ArrayConcat<T>`
@@ -152,7 +152,7 @@ A class representing the concatenation of two arrays or array operations.
 
 #### Constructor
 
-- `constructor(left: TCraftableArrayValue<T>, right: TCraftableArrayValue<T>)`
+- `constructor(left: TCArrayValue<T>, right: TCArrayValue<T>)`
   - Creates a concatenation of the given arrays or array operations.
 
 ### `CArrayMap<T, U>`
@@ -161,14 +161,14 @@ A class representing a mapped array where each element is transformed by a provi
 
 #### Constructor
 
-- `constructor(ref: TCraftableArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>)`
+- `constructor(ref: TCArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>)`
   - Creates a mapped array from the given array or array operation.
 
 #### Methods
 
 - `at(index: number): U | undefined`
   - Gets the transformed element at the specified index.
-- `slice(start: number, end?: number): TCraftableArrayValue<U>`
+- `slice(start: number, end?: number): TCArrayValue<U>`
   - Returns a slice of the mapped array from `start` to `end`.
 
 ### `ArrayWrap<T>`
@@ -195,27 +195,27 @@ A class representing an array extended with an additional value.
 
 ### Utility Functions
 
-#### `slice<T>(ref: TCraftableArrayValue<T>, start?: number, end?: number): TCraftableArrayValue<T>`
+#### `slice<T>(ref: TCArrayValue<T>, start?: number, end?: number): TCArrayValue<T>`
 
 Creates a slice of the given array or array operation.
 
-#### `concat<T>(left: TCraftableArrayValue<T>, right: TCraftableArrayValue<T>): TCraftableArrayValue<T>`
+#### `concat<T>(left: TCArrayValue<T>, right: TCArrayValue<T>): TCArrayValue<T>`
 
 Concatenates the given arrays or array operations.
 
-#### `wrap<T>(value: T): TCraftableArrayValue<T>`
+#### `wrap<T>(value: T): TCArrayValue<T>`
 
 Wraps the given value in an array-like structure.
 
-#### `mock<T>(): TCraftableArrayValue<T>`
+#### `mock<T>(): TCArrayValue<T>`
 
 Creates a mock array with no elements.
 
-#### `extend<T>(array: TCraftableArrayValue<T>, value: T): TCraftableArrayValue<T>`
+#### `extend<T>(array: TCArrayValue<T>, value: T): TCArrayValue<T>`
 
 Extends the given array with the additional value.
 
-#### `map<T, U>(array: TCraftableArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>): TCraftableArrayValue<U>`
+#### `map<T, U>(array: TCArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>): TCArrayValue<U>`
 
 Creates a mapped array where each element is transformed by the provided function.
 

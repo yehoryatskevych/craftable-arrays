@@ -1,24 +1,19 @@
-import { TCraftableArrayValue } from "./array-base";
+import { CArrayBase, TCArrayValue } from "./array-base";
 
-import { CArraySlice } from "./array-slice";
-import { CArrayBase } from "./array-base";
+import { CArraySlice, ICArraySliceable } from "./array-slice";
 
-export class CArrayMock<T> extends CArrayBase<T> {
+export class CArrayMock<T> extends CArrayBase<T> implements ICArraySliceable<T> {
   constructor() {
     super();
-    
+
     this._length = 0;
   }
-  
-  at(_index: number): T | undefined {
+
+  public at(_index: number): undefined {
     return undefined;
   }
-  
-  slice(_start: number, _end?: number): TCraftableArrayValue<T> {
-    return new CArraySlice(this, 0, 0, false);
-  }
-  
-  toArray(): T[] {
-    return [];
+
+  public slice(_start: number, _end?: number): TCArrayValue<T> {
+    return new CArraySlice(this, 0, 0);
   }
 }

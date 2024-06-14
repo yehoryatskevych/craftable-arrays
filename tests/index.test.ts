@@ -1,39 +1,39 @@
-import { slice, concat, wrap, mock, extend, map } from '../src';
+import { slice, concat, wrap, mock, extend, map } from "../src";
 
-describe('Craftable Arrays', () => {
+describe("Craftable Arrays", () => {
   const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
   
-  test('should concatenate arrays', () => {
+  test("should concatenate arrays", () => {
     const result = concat(slice(arr, 0, 5), slice(arr, 5, 10)).toArray();
     expect(result).toEqual(arr.slice(0, 10));
   });
   
-  test('should extend array', () => {
+  test("should extend array", () => {
     const result = extend(arr.slice(0, 3), arr[3]).toArray();
     expect(result).toEqual([...arr.slice(0, 3), arr[3]]);
   });
   
-  test('should mock array', () => {
+  test("should mock array", () => {
     const result = mock().toArray();
     expect(result).toEqual([]);
   });
   
-  test('should slice array', () => {
+  test("should slice array", () => {
     const result = slice(arr, 0, 5).toArray();
     expect(result).toEqual(arr.slice(0, 5));
   });
   
-  test('should wrap array', () => {
+  test("should wrap array", () => {
     const result = wrap(5).toArray();
     expect(result).toEqual([5]);
   });
 
-  test('should map array', () => {
+  test("should map array", () => {
     const result = map(arr, v => v * 100).toArray();
     expect(result).toEqual(arr.map(v => v * 100));
   });
   
-  test('should concatenate sliced arrays', () => {
+  test("should concatenate sliced arrays", () => {
     const part1 = slice(arr, 0, 5);
     const part2 = slice(arr, 5, 10);
     const concatenated = concat(part1, part2);
@@ -42,7 +42,7 @@ describe('Craftable Arrays', () => {
     expect(result).toEqual(arr.slice(0, 10));
   });
   
-  test('should handle complex operation', () => {
+  test("should handle complex operation", () => {
     const result = concat(
       concat(
         slice(arr, 0, 3),

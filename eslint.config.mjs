@@ -6,7 +6,7 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 2020,
-      sourceType: 'module',
+      sourceType: "module",
       globals: {
         ...globals.es2020,
         ...globals.node
@@ -17,6 +17,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     rules: {
+      "quotes": ["warn", "double"],
       "default-case": "off",
       "class-methods-use-this": "off",
       "no-unused-vars": "off",

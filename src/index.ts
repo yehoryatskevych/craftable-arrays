@@ -1,6 +1,6 @@
 import { CArrayBase, CArrayConcat, CArrayExtend, CArrayMock, CArraySlice, CArrayWrap, CArrayMap } from "./classes";
 
-export * from './classes';
+export * from "./classes";
 
 export const concat = <T>(...args: ConstructorParameters<typeof CArrayConcat<T>>) => new CArrayConcat<T>(...args);
 export const extend = <T>(...args: ConstructorParameters<typeof CArrayExtend<T>>) => new CArrayExtend<T>(...args);

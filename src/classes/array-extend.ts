@@ -1,41 +1,31 @@
-import { TCraftableArrayValue } from "./array-base";
+import { CArrayBase, TCArrayValue } from "./array-base";
+import { CArraySlice, ICArraySliceable } from "./array-slice";
 
-import { CArraySlice } from "./array-slice";
-import { CArrayBase } from "./array-base";
-
-export class CArrayExtend<T> extends CArrayBase<T> {
-  private _left: TCraftableArrayValue<T>;
+export class CArrayExtend<T> extends CArrayBase<T> implements ICArraySliceable<T> {
+  private _left: TCArrayValue<T>;
   private _right: T;
-  
-  constructor(left: TCraftableArrayValue<T>, right: T) {
+
+  constructor(left: TCArrayValue<T>, right: T) {
     super();
-    
+
     this._left = left;
     this._right = right;
     this._length = this._left.length + 1;
   }
-  
-  at(index: number): T | undefined {
+
+  public at(index: number) {
     if (index < this._left.length) {
-      if (this._left instanceof CArrayBase) {
-        return this._left.at(index);
-      }
-      
-      return this._left[index];
+      return this._left.at(index);
     }
-    
-    if (index == this.length - 1) {
+
+    if (index == this._length - 1) {
       return this._right;
     }
-    
+
     return undefined;
   }
-  
-  slice(start: number, end: number = this._length): TCraftableArrayValue<T> {
-    return new CArraySlice(this, start, end, false);
-  }
-  
-  toArray() {
-    return [...this._left, this._right] as T[];
+
+  public slice(start: number, end: number = this._length): TCArrayValue<T> {
+    return new CArraySlice(this, start, end);
   }
 }
