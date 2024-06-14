@@ -1,5 +1,8 @@
 # ⚒️ Lazy Arrays
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yehoryatskevych/lazy-arrays/blob/main/LICENSE) [![npm](https://img.shields.io/npm/v/lazy-arrays.svg)](https://www.npmjs.com/package/lazy-arrays) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/yehoryatskevych/lazy-arrays/tests.yml?branch=main)
+
+
 ## 📄 About
 
 **Lazy Arrays** is a high-performance TypeScript library designed for advanced array operations with lazy evaluation. This library provides a set of tools to manipulate arrays in an efficient manner by deferring computations until necessary.
