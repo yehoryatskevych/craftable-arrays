@@ -13,12 +13,20 @@ export class CArraySlice<T> extends CArrayBase<T> {
 
     if (allowFlat && ref instanceof CArraySlice) {
       this._ref = ref._ref;
-      this._start = Math.min(ref._start + start, ref._end);
-      this._end = Math.min(ref._start + end, ref._end);
+      this._start = ref._start + start;
+      this._end = ref._start + end;
+
+      if (this._start > ref._end) {
+        this._start = ref._end;
+      } 
+
+      if (this._end > ref._end) {
+        this._end = ref._end;
+      } 
     } else {
       this._ref = ref;
-      this._start = start;
-      this._end = end;
+      this._start = start < ref.length ? start : ref.length;
+      this._end = end < ref.length ? end : ref.length;
     }
 
     this._allowFlat = allowFlat;
