@@ -26,4 +26,11 @@ export class CArrayConcat<T> extends CArrayBase<T> implements ICArraySliceable<T
   public slice(start: number, end: number = this._length): TCArrayValue<T> {
     return new CArraySlice(this, start, end);
   }
+
+  public toArray(): T[] {
+    const leftArr = this._left instanceof CArrayBase ? this._left.toArray() : this._left;
+    const rightArr = this._right instanceof CArrayBase ? this._right.toArray() : this._right;
+
+    return leftArr.concat(rightArr);
+  }
 }

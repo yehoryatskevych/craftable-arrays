@@ -6,6 +6,7 @@ export class CArrayWrap<T> extends CArrayBase<T> implements ICArraySliceable<T> 
 
   constructor(value: T) {
     super();
+
     this._value = value;
     this._length = 1;
   }

@@ -29,8 +29,9 @@ describe("Craftable Arrays", () => {
   });
 
   test("should map array", () => {
-    const result = map(arr, v => v * 100).toArray();
-    expect(result).toEqual(arr.map(v => v * 100));
+    const transformfn = (v: number) => v * 100;
+    const result = map(arr, transformfn).toArray();
+    expect(result).toEqual(arr.map(transformfn));
   });
   
   test("should concatenate sliced arrays", () => {

@@ -42,4 +42,12 @@ export class CArraySlice<T> extends CArrayBase<T> implements ICArraySliceable<T>
   public slice(start: number, end: number = this._length): TCArrayValue<T> {
     return new CArraySlice(this, start, end);
   }
+
+  public toArray(): T[] {
+    if (this._ref instanceof CArrayBase) {
+      return this._ref.toArray();
+    }
+
+    return this._ref.slice(this._start, this._end);
+  }
 }
