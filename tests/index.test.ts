@@ -23,6 +23,11 @@ describe("Lazy Arrays", () => {
     expect(result).toEqual(arr.slice(0, 5));
   });
 
+  test("should slice sliced array", () => {
+    const result = slice(slice(arr, 3, 10), 0, 5).toArray();
+    expect(result).toEqual(arr.slice(3, 8));
+  });
+
   test("should wrap array", () => {
     const result = wrap(arr).toArray();
     expect(result).toEqual(arr);

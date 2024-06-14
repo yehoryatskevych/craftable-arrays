@@ -45,7 +45,7 @@ export class LArraySlice<T> extends LArrayBase<T> implements ILArraySliceable<T>
 
   public toArray(): T[] {
     if (this._ref instanceof LArrayBase) {
-      return this._ref.toArray();
+      return super.toArray();
     }
 
     return this._ref.slice(this._start, this._end);

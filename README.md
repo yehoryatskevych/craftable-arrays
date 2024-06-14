@@ -113,12 +113,12 @@ function mergeSort(arr) {
     result = concat(result, slice(sortedRight, rightIndex));
   }
   
-  if (!isLazyArray(arr) && isLazyArray(result)) {
-    return result.toArray();
-  }
-  
   return result;
 }
+
+const sorted = mergeSort(wrap([4, 3, 5, 1, 2])).toArray();
+
+console.log(sorted); // 1 2 3 4 5
 ```
 
 ## 📋 API Documentation
@@ -141,7 +141,7 @@ An abstract base class representing an array operation.
 - `toArray(): U[]`
   - Converts the array operation result to a plain array.
 
-### `ArraySlice<T>`
+### `LArraySlice<T>`
 
 A class representing a slice of an array.
 
@@ -150,7 +150,7 @@ A class representing a slice of an array.
 - `constructor(ref: TLArrayValue<T>, start?: number, end?: number, allowFlat?: boolean)`
   - Creates a slice of the given array or array operation.
 
-### `ArrayConcat<T>`
+### `LArrayConcat<T>`
 
 A class representing the concatenation of two arrays or array operations.
 
@@ -175,7 +175,7 @@ A class representing a mapped array where each element is transformed by a provi
 - `slice(start: number, end?: number): TLArrayValue<U>`
   - Returns a slice of the mapped array from `start` to `end`.
 
-### `ArrayWrap<T>`
+### `LArrayWrap<T>`
 
 A class representing a value wrapped in an array-like structure.
 
@@ -184,11 +184,11 @@ A class representing a value wrapped in an array-like structure.
 - `constructor(value: T | TLArrayValue<T>)`
   - Wraps the given value.
 
-### `ArrayMock<T>`
+### `LArrayMock<T>`
 
 A class representing a mock array with no elements.
 
-### `ArrayExtend<T>`
+### `LArrayExtend<T>`
 
 A class representing an array extended with an additional value.
 
