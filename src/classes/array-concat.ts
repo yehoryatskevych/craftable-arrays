@@ -1,11 +1,11 @@
-import { CArrayBase, TCArrayValue } from "./array-base";
-import { CArraySlice, ICArraySliceable } from "./array-slice";
+import { LArrayBase, TLArrayValue } from "./array-base";
+import { LArraySlice, ILArraySliceable } from "./array-slice";
 
-export class CArrayConcat<T> extends CArrayBase<T> implements ICArraySliceable<T> {
-  private _left: TCArrayValue<T>;
-  private _right: TCArrayValue<T>;
+export class LArrayConcat<T> extends LArrayBase<T> implements ILArraySliceable<T> {
+  private _left: TLArrayValue<T>;
+  private _right: TLArrayValue<T>;
 
-  constructor(left: TCArrayValue<T>, right: TCArrayValue<T>) {
+  constructor(left: TLArrayValue<T>, right: TLArrayValue<T>) {
     super();
 
     this._left = left;
@@ -23,13 +23,13 @@ export class CArrayConcat<T> extends CArrayBase<T> implements ICArraySliceable<T
     return this._right.at(index - this._left.length);
   }
 
-  public slice(start: number, end: number = this._length): TCArrayValue<T> {
-    return new CArraySlice(this, start, end);
+  public slice(start: number, end: number = this._length): TLArrayValue<T> {
+    return new LArraySlice(this, start, end);
   }
 
   public toArray(): T[] {
-    const leftArr = this._left instanceof CArrayBase ? this._left.toArray() : this._left;
-    const rightArr = this._right instanceof CArrayBase ? this._right.toArray() : this._right;
+    const leftArr = this._left instanceof LArrayBase ? this._left.toArray() : this._left;
+    const rightArr = this._right instanceof LArrayBase ? this._right.toArray() : this._right;
 
     return leftArr.concat(rightArr);
   }

@@ -1,11 +1,11 @@
-import { CArrayBase, TCArrayValue } from "./array-base";
-import { CArraySlice, ICArraySliceable } from "./array-slice";
+import { LArrayBase, TLArrayValue } from "./array-base";
+import { LArraySlice, ILArraySliceable } from "./array-slice";
 
-export class CArrayExtend<T> extends CArrayBase<T> implements ICArraySliceable<T> {
-  private _left: TCArrayValue<T>;
+export class LArrayExtend<T> extends LArrayBase<T> implements ILArraySliceable<T> {
+  private _left: TLArrayValue<T>;
   private _right: T;
 
-  constructor(left: TCArrayValue<T>, right: T) {
+  constructor(left: TLArrayValue<T>, right: T) {
     super();
 
     this._left = left;
@@ -25,7 +25,7 @@ export class CArrayExtend<T> extends CArrayBase<T> implements ICArraySliceable<T
     return undefined;
   }
 
-  public slice(start: number, end: number = this._length): TCArrayValue<T> {
-    return new CArraySlice(this, start, end);
+  public slice(start: number, end: number = this._length): TLArrayValue<T> {
+    return new LArraySlice(this, start, end);
   }
 }

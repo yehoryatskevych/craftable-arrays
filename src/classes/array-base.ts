@@ -1,6 +1,6 @@
-export type TCArrayValue<T> = CArrayBase<T> | Array<T>;
+export type TLArrayValue<T> = LArrayBase<T> | Array<T>;
 
-export abstract class CArrayBase<T, U = T> implements RelativeIndexable<U> {
+export abstract class LArrayBase<T, U = T> implements RelativeIndexable<U> {
   protected _length: number = 0;
 
   public get length() {
@@ -14,7 +14,7 @@ export abstract class CArrayBase<T, U = T> implements RelativeIndexable<U> {
   }
 
   public abstract at(index: number): U | undefined;
-  public abstract slice(start: number, end?: number): TCArrayValue<U>;
+  public abstract slice(start: number, end?: number): TLArrayValue<U>;
 
   public toArray(): U[] {
     const result = new Array(this._length);

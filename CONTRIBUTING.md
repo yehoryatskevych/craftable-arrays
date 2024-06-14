@@ -1,6 +1,6 @@
-# Contributing to Craftable Arrays
+# Contributing to Lazy Arrays
 
-The following is a set of guidelines for contributing to Craftable Arrays. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to Lazy Arrays. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Table of Contents
 
@@ -76,4 +76,4 @@ By following these guidelines, you help us keep the project consistent, readable
 
 ## License
 
-By contributing to Craftable Arrays, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+By contributing to Lazy Arrays, you agree that your contributions will be licensed under the [MIT License](LICENSE).

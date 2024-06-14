@@ -1,35 +1,36 @@
-# ⚒️ Craftable Arrays
+# ⚒️ Lazy Arrays
 
 ## 📄 About
 
-**Craftable Arrays** is a TypeScript library designed for advanced array operations such as slicing, concatenation, mapping, and more. This library provides a set of tools to manipulate arrays in a functional and efficient manner.
+**Lazy Arrays** is a high-performance TypeScript library designed for advanced array operations with lazy evaluation. This library provides a set of tools to manipulate arrays in an efficient manner by deferring computations until necessary.
 
 ## 📚 Features
 
-- **Array Slicing**: Easily create subarrays from existing arrays.
-- **Array Concatenation**: Combine multiple arrays or slices into one.
+- **Lazy Evaluation**: Perform operations only when needed.
+- **Array Slicing**: Create subarrays from existing arrays efficiently.
+- **Array Concatenation**: Combine multiple arrays or slices into one without immediate computation.
+- **Array Mapping**: Apply transformations lazily to each element in the array.
 - **Array Wrapping**: Wrap single values into array-like structures.
-- **Array Mapping**: Apply a transformation function to each element in the array.
 - **Array Mocking**: Use mock arrays in operations.
 - **Array Extension**: Extend arrays with additional values.
-- **High Performance**: Avoids the need to create intermediate array instances, ensuring faster operations.
+- **High Performance**: Avoid unnecessary computations and memory allocations.
 
 ## 🔄 Installation
 
-To install Craftable Arrays, use npm:
+To install Lazy Arrays, use npm:
 
 ```bash
-npm install craftable-arrays
+npm install lazy-arrays
 ```
 
 ## ▶ Usage
 
-Here's how to use the main features of Craftable Arrays:
+Here's how to use the main features of Lazy Arrays:
 
-### Importing Craftable Arrays
+### Importing Lazy Arrays
 
 ```javascript
-import { slice, concat, mock, extend, wrap, map, isCraftedArray } from 'craftable-arrays';
+import { slice, concat, mock, extend, wrap, map, isLazyArray } from 'lazy-arrays';
 ```
 
 ### Example
@@ -75,7 +76,7 @@ console.log(result); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 ### Merge Sort Example
 
-Craftable Arrays are particularly efficient for sorting algorithms like merge sort because they avoid creating intermediate array instances, which can be time-consuming. Here's an example implementation of merge sort using Craftable Arrays:
+Lazy Arrays are particularly efficient for sorting algorithms like merge sort because they avoid creating intermediate array instances and defer computations until necessary. Here's an example implementation of merge sort using Lazy Arrays:
 
 ```javascript
 function mergeSort(arr) {
@@ -109,7 +110,7 @@ function mergeSort(arr) {
     result = concat(result, slice(sortedRight, rightIndex));
   }
   
-  if (!isCraftedArray(arr) && isCraftedArray(result)) {
+  if (!isLazyArray(arr) && isLazyArray(result)) {
     return result.toArray();
   }
   
@@ -119,7 +120,7 @@ function mergeSort(arr) {
 
 ## 📋 API Documentation
 
-### `CArrayBase<T, U = T>`
+### `LArrayBase<T, U = T>`
 
 An abstract base class representing an array operation.
 
@@ -132,7 +133,7 @@ An abstract base class representing an array operation.
 
 - `at(index: number): U | undefined`
   - Gets the element at the specified index.
-- `slice(start: number, end?: number): TCArrayValue<U>`
+- `slice(start: number, end?: number): TLArrayValue<U>`
   - Returns a slice of the array from `start` to `end`.
 - `toArray(): U[]`
   - Converts the array operation result to a plain array.
@@ -143,7 +144,7 @@ A class representing a slice of an array.
 
 #### Constructor
 
-- `constructor(ref: TCArrayValue<T>, start?: number, end?: number, allowFlat?: boolean)`
+- `constructor(ref: TLArrayValue<T>, start?: number, end?: number, allowFlat?: boolean)`
   - Creates a slice of the given array or array operation.
 
 ### `ArrayConcat<T>`
@@ -152,32 +153,32 @@ A class representing the concatenation of two arrays or array operations.
 
 #### Constructor
 
-- `constructor(left: TCArrayValue<T>, right: TCArrayValue<T>)`
+- `constructor(left: TLArrayValue<T>, right: TLArrayValue<T>)`
   - Creates a concatenation of the given arrays or array operations.
 
-### `CArrayMap<T, U>`
+### `LArrayMap<T, U>`
 
 A class representing a mapped array where each element is transformed by a provided function.
 
 #### Constructor
 
-- `constructor(ref: TCArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>)`
+- `constructor(ref: TLArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>)`
   - Creates a mapped array from the given array or array operation.
 
 #### Methods
 
 - `at(index: number): U | undefined`
   - Gets the transformed element at the specified index.
-- `slice(start: number, end?: number): TCArrayValue<U>`
+- `slice(start: number, end?: number): TLArrayValue<U>`
   - Returns a slice of the mapped array from `start` to `end`.
 
 ### `ArrayWrap<T>`
 
-A class representing a single value wrapped in an array-like structure.
+A class representing a value wrapped in an array-like structure.
 
 #### Constructor
 
-- `constructor(value: T)`
+- `constructor(value: T | TLArrayValue<T>)`
   - Wraps the given value.
 
 ### `ArrayMock<T>`
@@ -195,27 +196,27 @@ A class representing an array extended with an additional value.
 
 ### Utility Functions
 
-#### `slice<T>(ref: TCArrayValue<T>, start?: number, end?: number): TCArrayValue<T>`
+#### `slice<T>(ref: TLArrayValue<T>, start?: number, end?: number): TLArrayValue<T>`
 
 Creates a slice of the given array or array operation.
 
-#### `concat<T>(left: TCArrayValue<T>, right: TCArrayValue<T>): TCArrayValue<T>`
+#### `concat<T>(left: TLArrayValue<T>, right: TLArrayValue<T>): TLArrayValue<T>`
 
 Concatenates the given arrays or array operations.
 
-#### `wrap<T>(value: T): TCArrayValue<T>`
+#### `wrap<T>(value: T): TLArrayValue<T>`
 
 Wraps the given value in an array-like structure.
 
-#### `mock<T>(): TCArrayValue<T>`
+#### `mock<T>(): TLArrayValue<T>`
 
 Creates a mock array with no elements.
 
-#### `extend<T>(array: TCArrayValue<T>, value: T): TCArrayValue<T>`
+#### `extend<T>(array: TLArrayValue<T>, value: T): TLArrayValue<T>`
 
 Extends the given array with the additional value.
 
-#### `map<T, U>(array: TCArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>): TCArrayValue<U>`
+#### `map<T, U>(array: TLArrayValue<T>, transformfn: TArrayMapTransformFn<T, U>): TLArrayValue<U>`
 
 Creates a mapped array where each element is transformed by the provided function.
 

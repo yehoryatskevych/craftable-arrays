@@ -1,8 +1,8 @@
-import { CArrayBase, TCArrayValue } from "./array-base";
+import { LArrayBase, TLArrayValue } from "./array-base";
 
-import { CArraySlice, ICArraySliceable } from "./array-slice";
+import { LArraySlice, ILArraySliceable } from "./array-slice";
 
-export class CArrayMock<T> extends CArrayBase<T> implements ICArraySliceable<T> {
+export class LArrayMock<T> extends LArrayBase<T> implements ILArraySliceable<T> {
   constructor() {
     super();
 
@@ -13,7 +13,7 @@ export class CArrayMock<T> extends CArrayBase<T> implements ICArraySliceable<T> 
     return undefined;
   }
 
-  public slice(_start: number, _end?: number): TCArrayValue<T> {
-    return new CArraySlice(this, 0, 0);
+  public slice(_start: number, _end?: number): TLArrayValue<T> {
+    return new LArraySlice(this, 0, 0);
   }
 }

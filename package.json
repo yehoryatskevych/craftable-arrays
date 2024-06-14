@@ -1,7 +1,7 @@
 {
-  "name": "craftable-arrays",
-  "version": "0.1.3",
-  "description": "Craftable Arrays",
+  "name": "lazy-arrays",
+  "version": "1.0.0",
+  "description": "Lazy Arrays",
   "author": "Yatskevych Yehor",
   "license": "MIT",
   "main": "lib/index.js",
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yehoryatskevych/craftable-arrays"
+    "url": "https://github.com/yehoryatskevych/lazy-arrays"
   },
   "bugs": {
-    "url": "https://github.com/yehoryatskevych/craftable-arrays"
+    "url": "https://github.com/yehoryatskevych/lazy-arrays"
   },
-  "homepage": "https://github.com/yehoryatskevych/craftable-arrays",
+  "homepage": "https://github.com/yehoryatskevych/lazy-arrays",
   "keywords": [
     "array",
-    "craftable",
+    "lazy",
     "builder",
     "util",
     "tool"

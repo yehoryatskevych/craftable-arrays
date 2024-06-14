@@ -1,18 +1,18 @@
-import { CArrayBase, TCArrayValue } from "./array-base";
+import { LArrayBase, TLArrayValue } from "./array-base";
 
-export interface ICArraySliceable<T> {
-  slice(start: number, end?: number): TCArrayValue<T>;
+export interface ILArraySliceable<T> {
+  slice(start: number, end?: number): TLArrayValue<T>;
 }
 
-export class CArraySlice<T> extends CArrayBase<T> implements ICArraySliceable<T> {
-  private _ref: TCArrayValue<T>;
+export class LArraySlice<T> extends LArrayBase<T> implements ILArraySliceable<T> {
+  private _ref: TLArrayValue<T>;
   private _start: number;
   private _end: number;
 
-  constructor(ref: TCArrayValue<T>, start = 0, end = ref.length) {
+  constructor(ref: TLArrayValue<T>, start = 0, end = ref.length) {
     super();
 
-    if (ref instanceof CArraySlice) {
+    if (ref instanceof LArraySlice) {
       this._ref = ref._ref;
       this._start = ref._start + start;
       this._end = ref._start + end;
@@ -39,12 +39,12 @@ export class CArraySlice<T> extends CArrayBase<T> implements ICArraySliceable<T>
     return this._ref.at(this._start + index);
   }
 
-  public slice(start: number, end: number = this._length): TCArrayValue<T> {
-    return new CArraySlice(this, start, end);
+  public slice(start: number, end: number = this._length): TLArrayValue<T> {
+    return new LArraySlice(this, start, end);
   }
 
   public toArray(): T[] {
-    if (this._ref instanceof CArrayBase) {
+    if (this._ref instanceof LArrayBase) {
       return this._ref.toArray();
     }
 
